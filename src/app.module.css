@@ -1,0 +1,31 @@
+.container {
+    min-width: 100vw;
+    min-height: 100vh;
+    background: #E5E5E5;
+    color: #000000;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-family: 'Roboto' sans-serif;
+}
+
+.box {
+    position: relative;
+    width: 695px;
+    height: 640px;
+    background: #ffffff;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: auto;
+}
+
+.items_wrapper{
+    padding-left: 76px;
+    padding-top: 106px;
+}
+
+.drop_box_wrapper{
+    display: grid;
+    grid-template-rows: 106px 1fr;
+    padding-right: 80px;
+}

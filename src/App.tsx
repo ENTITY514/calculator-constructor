@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import style from './app.module.css';
+import { DropBox } from './Components/drop_box/drop_box';
+import { Items } from './Components/Items/items';
+import { Tumbler } from './Components/tumbler/tumbler';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.container}>
+      <div className={style.box}>
+        <div className={style.items_wrapper}>
+          <Items />
+        </div>
+        <div className={style.drop_box_wrapper}>
+          <Tumbler />
+          <DropBox />
+        </div>
+      </div>
     </div>
   );
 }

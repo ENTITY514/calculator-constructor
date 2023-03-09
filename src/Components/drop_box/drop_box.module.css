@@ -1,0 +1,13 @@
+.container {
+    box-sizing: border-box;
+
+    width: 243px;
+    height: 448px;
+
+    border: 2px dashed #C4C4C4;
+    border-radius: 6px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
