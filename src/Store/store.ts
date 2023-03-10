@@ -10,8 +10,8 @@ export const setupStore = () => {
         reducer: rootReducers,
         middleware: (getDefaultMiddleware) => {
             return getDefaultMiddleware({
-                immutableCheck: false,
-                serializableCheck: false,
+                immutableCheck: true,
+                serializableCheck: true,
                 thunk: true,
             })
         },

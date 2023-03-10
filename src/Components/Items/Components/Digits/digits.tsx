@@ -1,3 +1,5 @@
+import React from 'react';
+import { BLOCKS } from '../../../../Store/models/CalculatorItems';
 import { Digit } from './Digit/digit';
 import style from './digits.module.css';
 
@@ -16,8 +18,31 @@ export enum DIGITS {
 }
 
 export const Digits: React.FC = () => {
+    const element = React.useRef<HTMLDivElement>(null)
+
+    const DragStart = (e: DragEvent) => {
+        if (element.current !== null) {
+            e.dataTransfer?.setData("block_name", BLOCKS.DIGITS)
+        }
+    }
+
+    const DragOver = (e: DragEvent) => {
+        e.preventDefault()
+    }
+
+
+    React.useEffect(() => {
+        element.current?.addEventListener("dragstart", DragStart)
+        element.current?.addEventListener("dragover", DragOver)
+
+        return () => {
+            element.current?.removeEventListener("dragstart", DragStart)
+            element.current?.removeEventListener("dragover", DragOver)
+        }
+
+    }, [])
     return (
-        <div className={style.container}>
+        <div className={style.container} ref={element} draggable={true}>
             <div className={style.digits}>
                 <Digit digit={DIGITS.ONE} />
                 <Digit digit={DIGITS.TWO} />
