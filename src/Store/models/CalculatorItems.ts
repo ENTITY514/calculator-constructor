@@ -2,5 +2,6 @@ export enum BLOCKS {
     DISPLAY = "display",
     OPERATORS = "operators",
     EQUAL = "equals",
-    DIGITS = "digits"
+    DIGITS = "digits",
+    DEFAULT = "default"
 }

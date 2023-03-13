@@ -1,0 +1,27 @@
+.container {
+    width: 240px;
+    height: 72px;
+
+    background: #FFFFFF;
+
+    border-radius: 4px;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    user-select: none;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 232px;
+    height: 64px;
+    color: rgb(255, 255, 255);
+
+    background: #5D5FEF;
+    border-radius: 6px;
+    user-select: none;
+}

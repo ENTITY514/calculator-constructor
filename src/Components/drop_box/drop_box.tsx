@@ -1,6 +1,7 @@
 import React from 'react';
-import { useAppSelector } from '../../Store/hooks/redux';
+import { useAppDispatch, useAppSelector } from '../../Store/hooks/redux';
 import { BLOCKS } from '../../Store/models/CalculatorItems';
+import { calculatorConstructorSlice } from '../../Store/reducers/CalculatorConstructorSlice';
 import { Digits } from '../Items/Components/Digits/digits';
 import { Display } from '../Items/Components/Display/display';
 import { Equals } from '../Items/Components/Equal/equals';
@@ -10,18 +11,10 @@ import { EmptyDropBox } from './Components/EmptyDropBox/empty_drop_box';
 import style from './drop_box.module.css';
 
 export const DropBox: React.FC = () => {
-
-  const [blocks, setBlocks] = React.useState<Array<BLOCKS>>([])
+  const actions = calculatorConstructorSlice.actions
+  const blocks = useAppSelector(state => state.calculatorConstructorSlice.blocks)
+  const dispatch = useAppDispatch()
   const element = React.useRef<HTMLDivElement>(null)
-
-  const DragStart = (e: DragEvent) => {
-    if (element.current !== null) {
-    }
-
-  }
-
-  const DragEnd = (e: DragEvent) => {
-  }
 
   const DragLeave = (e: DragEvent) => {
     if (element.current !== null) {
@@ -47,7 +40,8 @@ export const DropBox: React.FC = () => {
   const Drop = (e: DragEvent) => {
     e.preventDefault()
     if (element.current !== null) {
-      setBlocks(prev => [...prev, e.dataTransfer?.getData("block_name") as BLOCKS])
+      console.log(blocks);
+      dispatch(actions.addBlock(e.dataTransfer?.getData("block_name") as BLOCKS))
       element.current.style.background = "#FFFFFF"
     }
 
@@ -56,8 +50,6 @@ export const DropBox: React.FC = () => {
 
   React.useEffect(() => {
     if (element.current) {
-      element.current.addEventListener("dragstart", DragStart)
-      element.current.addEventListener("dragend", DragEnd)
       element.current.addEventListener("dragleave", DragLeave)
       element.current.addEventListener("dragover", DragOver)
       element.current.addEventListener("dragenter", DragEnter)

@@ -6,7 +6,7 @@
     display: grid;
     align-items: center;
     justify-items: center;
-    font-family: 'Roboto' sans-serif;
+    font-family: 'Roboto'sans-serif;
 }
 
 .box {
@@ -16,16 +16,6 @@
     background: #ffffff;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 50px;
     margin: auto;
-}
-
-.items_wrapper{
-    padding-left: 76px;
-    padding-top: 106px;
-}
-
-.drop_box_wrapper{
-    display: grid;
-    grid-template-rows: 106px 1fr;
-    padding-right: 80px;
 }

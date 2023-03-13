@@ -1,4 +1,4 @@
-import { ImageUI } from '../../../../UI/Image/image';
+import { ImageUI } from '../../../../../../UI/Image/image';
 import style from './empty_drop_box.module.css';
 
 export const EmptyDropBox: React.FC = () => {

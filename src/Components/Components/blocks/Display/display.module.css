@@ -1,0 +1,16 @@
+.container {
+    height: 52px;
+    width: 240px;
+    border-radius: 6px;
+    padding: 4px 8px 4px 8px;
+    background: #F3F4F6;
+    overflow: hidden;
+
+    font-style: normal;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 23px;
+
+    color: #111827;
+    text-align: right;
+}

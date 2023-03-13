@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import { BLOCKS } from '../../../../Store/models/CalculatorItems';
 import { Digits } from '../../../Items/Components/Digits/digits';
 import { Display } from '../../../Items/Components/Display/display';
@@ -14,20 +15,18 @@ export const Blocks: React.FC<IBlocksProps> = ({ blocks }) => {
         <div className={style.container}>
             {
                 blocks.map((block) => {
-                    console.log(block);
-
                     switch (block) {
                         case BLOCKS.DISPLAY:
-                            return <Display />
+                            return <Display key={nanoid()}/>
 
                         case BLOCKS.DIGITS:
-                            return <Digits />
+                            return <Digits key={nanoid()}/>
 
                         case BLOCKS.EQUAL:
-                            return <Equals />
+                            return <Equals key={nanoid()}/>
 
                         case BLOCKS.OPERATORS:
-                            return <Operators />
+                            return <Operators key={nanoid()}/>
 
                         default:
                             break;

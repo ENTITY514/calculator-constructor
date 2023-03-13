@@ -1,19 +1,13 @@
 import style from './app.module.css';
-import { DropBox } from './Components/drop_box/drop_box';
-import { Items } from './Components/Items/items';
-import { Tumbler } from './Components/tumbler/tumbler';
+import { CalculatorWrapper } from './Components/calculator_wrapper/calculator_wrapper';
+import { ItemsWrapper } from './Components/items_wrapper/items_wrapper';
 
 function App() {
   return (
     <div className={style.container}>
       <div className={style.box}>
-        <div className={style.items_wrapper}>
-          <Items />
-        </div>
-        <div className={style.drop_box_wrapper}>
-          <Tumbler />
-          <DropBox />
-        </div>
+        <ItemsWrapper />
+        <CalculatorWrapper />
       </div>
     </div>
   );
