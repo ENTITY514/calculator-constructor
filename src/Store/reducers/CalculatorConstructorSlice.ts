@@ -10,9 +10,9 @@ let initialState: ICalculatorConstructor = {
         { name: BLOCKS.DIGITS, is_draggable: true },
         { name: BLOCKS.EQUAL, is_draggable: true },
     ],
+    calculator_blocks: [],
     value: "",
     last_value: "",
-    calculator_blocks: [],
     is_solve: false
 }
 
@@ -30,6 +30,14 @@ export const calculatorConstructorSlice = createSlice({
                     return block.name === action.payload ? { name: action.payload, is_draggable: false } : block
                 })
             }
+        },
+        deleteBlock: (state, action: PayloadAction<{ block_name: string, index: number }>) => {
+            state.calculator_blocks = state.calculator_blocks.filter(block => block.name !== action.payload.block_name)
+            state.constructor_blocks.forEach(block => {
+                if (block.name === action.payload.block_name) {
+                    block.is_draggable = true
+                }
+            });
         },
         changeValue: (state, action: PayloadAction<string>) => {
             if (state.value === "Не определено" || state.is_solve) {

@@ -73,6 +73,7 @@ export const DropBox: React.FC = () => {
             onBlockItemClick={state.is_constructor ? () => { } : (value) => {
               dispatch(actions.changeValue(value))
             }}
+            onDoubleBlockItemClick={(block_name, index) => { dispatch(actions.deleteBlock({ block_name, index })) }}
             draggable={state.is_constructor}
           />
       }

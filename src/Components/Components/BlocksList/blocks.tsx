@@ -19,6 +19,7 @@ interface IBlocksListProps {
     onDragLeave?: (e: React.DragEvent<HTMLElement>, name: BLOCKS) => void
     onDrop?: (e: React.DragEvent<HTMLElement>, name: BLOCKS) => void
     onBlockItemClick?: (block_item_value: string) => void
+    onDoubleBlockItemClick?: (block_name: string, index: number) => void
     draggable?: boolean
 }
 
@@ -34,6 +35,7 @@ export const BlocksList: React.FC<IBlocksListProps> = (
         onDragLeave,
         onDrop,
         onBlockItemClick,
+        onDoubleBlockItemClick = () => { },
         draggable = true
     }
 ) => {
@@ -46,7 +48,7 @@ export const BlocksList: React.FC<IBlocksListProps> = (
                 return <Digits onClick={onBlockItemClick} is_work={!is_constructor} />
 
             case BLOCKS.EQUAL:
-                return <Equals onClick={onBlockItemClick}/>
+                return <Equals onClick={onBlockItemClick} />
 
             case BLOCKS.OPERATORS:
                 return <Operators onClick={onBlockItemClick} is_work={!is_constructor} />
@@ -59,7 +61,7 @@ export const BlocksList: React.FC<IBlocksListProps> = (
     return (
         <div className={style.container}>
             {
-                blocks.map((block) => {
+                blocks.map((block, index) => {
                     return <div
                         className={style.block}
                         key={nanoid()}
@@ -67,6 +69,7 @@ export const BlocksList: React.FC<IBlocksListProps> = (
                             opacity: block.is_draggable ? "1" : "0.5",
                             boxShadow: is_constructor ? "0px 2px 4px rgba(0, 0, 0, 0.06), 0px 4px 6px rgba(0, 0, 0, 0.1)" : "none",
                         }}
+                        onDoubleClick={() => { onDoubleBlockItemClick(block.name, index) }}
                         draggable={block.is_draggable && draggable}
                         onDragStart={onDragStart ? (e) => { onDragStart(e, block.name) } : undefined}
                         onDragEnd={onDragEnd ? (e) => { onDragEnd(e, block.name) } : undefined}
