@@ -37,7 +37,6 @@ export const DropBox: React.FC = () => {
       dispatch(actions.addBlockToConstructor(e.dataTransfer?.getData("block_name") as BLOCKS))
       element.current.style.background = "#FFFFFF"
     }
-
   }
 
 
@@ -59,6 +58,19 @@ export const DropBox: React.FC = () => {
     e.currentTarget.style.borderBottom = "none"
   }
 
+  const onDragStart = (e: React.DragEvent, name: string) => {
+    e.dataTransfer.setData("block_name", name)
+  }
+
+  const onDrop = (e: React.DragEvent, name: string) => {
+    e.preventDefault()
+    if (element.current !== null) {
+      dispatch(actions.swapBlock({ first: name, second: e.dataTransfer?.getData("block_name") as BLOCKS }))
+    }
+  }
+
+
+
   return (
     <div className={style.container} ref={element}>
       {
@@ -68,6 +80,8 @@ export const DropBox: React.FC = () => {
             blocks={state.calculator_blocks}
             onDragOver={onDragOver}
             onDragLeave={onDragLeave}
+            onDragStart={onDragStart}
+            onDrop={onDrop}
             display_value={state.is_constructor ? undefined : state.last_value}
             is_constructor={state.is_constructor}
             onBlockItemClick={state.is_constructor ? () => { } : (value) => {

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IBlockInfo } from "../models/BlockInfo";
 import { BLOCKS } from "../models/CalculatorItems";
 import { ICalculatorConstructor } from "../models/ICalculatorConstructor";
 
@@ -11,8 +12,8 @@ let initialState: ICalculatorConstructor = {
         { name: BLOCKS.EQUAL, is_draggable: true },
     ],
     calculator_blocks: [],
-    value: "",
-    last_value: "",
+    value: "0",
+    last_value: "0",
     is_solve: false
 }
 
@@ -41,8 +42,8 @@ export const calculatorConstructorSlice = createSlice({
         },
         changeValue: (state, action: PayloadAction<string>) => {
             if (state.value === "Не определено" || state.is_solve) {
-                state.value = ""
-                state.last_value = ""
+                state.value = "0"
+                state.last_value = "0"
                 state.is_solve = false
             }
             if (action.payload === "=") {
@@ -69,6 +70,19 @@ export const calculatorConstructorSlice = createSlice({
                 state.last_value += action.payload
             }
         },
+        swapBlock: (state, action: PayloadAction<{ first: string, second: string }>) => {
+            let one: number = 0
+            let two: number = 0
+            state.calculator_blocks.forEach((block, index) => {
+                if (block.name === action.payload.first) {
+                    one = index
+                }
+                if (block.name === action.payload.second) {
+                    two = index
+                }
+            });
+            [state.calculator_blocks[one], state.calculator_blocks[two]] = [state.calculator_blocks[two], state.calculator_blocks[one]]
+        }
     }
 })
 
