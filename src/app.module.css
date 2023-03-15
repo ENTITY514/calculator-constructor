@@ -10,19 +10,23 @@
 }
 
 .box {
-    width: 700px;
-    height: 640px;
+    width: 600px;
+    height: 600px;
     background: #ffffff;
     display: grid;
     grid-template-rows: 1fr 4fr;
 }
 
-.tumbler{
-    background-color: red;
-}
-
-.calculator{
+.tumbler {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    background-color: blue;
+    align-items: center;
+    justify-items: center;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
 }

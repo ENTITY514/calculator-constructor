@@ -8,6 +8,7 @@ function App() {
     <div className={style.container}>
       <div className={style.box}>
         <div className={style.tumbler}>
+          <div></div>
           <Tumbler />
         </div>
         <div className={style.calculator}>
