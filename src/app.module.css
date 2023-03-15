@@ -10,12 +10,19 @@
 }
 
 .box {
-    position: relative;
-    width: 695px;
+    width: 700px;
     height: 640px;
     background: #ffffff;
     display: grid;
+    grid-template-rows: 1fr 4fr;
+}
+
+.tumbler{
+    background-color: red;
+}
+
+.calculator{
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 50px;
-    margin: auto;
+    background-color: blue;
 }

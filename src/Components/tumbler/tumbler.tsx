@@ -1,5 +1,5 @@
-import { useAppSelector, useAppDispatch } from '../../../../Store/hooks/redux';
-import { calculatorConstructorSlice } from '../../../../Store/reducers/CalculatorConstructorSlice';
+import { useAppSelector, useAppDispatch } from '../../Store/hooks/redux';
+import { calculatorConstructorSlice } from '../../Store/reducers/CalculatorConstructorSlice';
 import { Action } from './Action/action';
 import style from './tumbler.module.css';
 

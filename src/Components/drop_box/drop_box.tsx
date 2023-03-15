@@ -1,8 +1,8 @@
 import React from 'react';
-import { useAppSelector, useAppDispatch } from '../../../../Store/hooks/redux';
-import { BLOCKS } from '../../../../Store/models/CalculatorItems';
-import { calculatorConstructorSlice } from '../../../../Store/reducers/CalculatorConstructorSlice';
-import { BlocksList } from '../../../Components/BlocksList/blocks';
+import { useAppSelector, useAppDispatch } from '../../Store/hooks/redux';
+import { BLOCKS } from '../../Store/models/CalculatorItems';
+import { calculatorConstructorSlice } from '../../Store/reducers/CalculatorConstructorSlice';
+import { BlocksList } from '../Components/BlocksList/blocks';
 import { EmptyDropBox } from './Components/EmptyDropBox/empty_drop_box';
 import style from './drop_box.module.css';
 

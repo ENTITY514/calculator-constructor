@@ -1,4 +1,4 @@
-import { ImageUI } from '../../../../../UI/Image/image';
+import { ImageUI } from '../../../UI/Image/image';
 import style from './action.module.css';
 
 interface IActionProps {
