@@ -12,8 +12,8 @@ let initialState: ICalculatorConstructor = {
         { name: BLOCKS.EQUAL, is_draggable: true },
     ],
     calculator_blocks: [],
-    value: "0",
-    last_value: "0",
+    value: "",
+    last_value: "",
     is_solve: false
 }
 
@@ -42,15 +42,21 @@ export const calculatorConstructorSlice = createSlice({
         },
         changeValue: (state, action: PayloadAction<string>) => {
             if (state.value === "Не определено" || state.is_solve) {
-                state.value = "0"
-                state.last_value = "0"
+                state.value = ""
+                state.last_value = ""
                 state.is_solve = false
             }
             if (action.payload === "=") {
                 if (Number.isNaN(parseInt(state.value[state.value.length - 1]))) {
-                    state.value.slice(state.value.length - 1, 1)
+                    state.value = state.value.slice(0, - 1)
                 }
-                state.value = String(eval(state.value))
+                if (Number.isNaN(parseInt(state.value[0]))) {
+                    state.value = state.value.slice(1, state.value.length )
+                }
+                console.log(state.value);
+
+
+                state.value = String((Math.ceil(eval(state.value) * 10e7) / 10e7))
 
                 if (state.value === "Infinity") {
                     state.value = "Не определено"
@@ -74,12 +80,8 @@ export const calculatorConstructorSlice = createSlice({
             let one: number = 0
             let two: number = 0
             state.calculator_blocks.forEach((block, index) => {
-                if (block.name === action.payload.first) {
-                    one = index
-                }
-                if (block.name === action.payload.second) {
-                    two = index
-                }
+                if (block.name === action.payload.first) one = index
+                if (block.name === action.payload.second) two = index
             });
             [state.calculator_blocks[one], state.calculator_blocks[two]] = [state.calculator_blocks[two], state.calculator_blocks[one]]
         }

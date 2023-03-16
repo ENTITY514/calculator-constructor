@@ -55,7 +55,11 @@ export const DropBox: React.FC = () => {
   }
 
   const onDragLeave = (e: React.DragEvent<HTMLElement>, name: BLOCKS) => {
-    e.currentTarget.style.borderBottom = "none"
+    e.currentTarget.style.border = "none"
+  }
+
+  const onDragEnd = (e: React.DragEvent<HTMLElement>, name: BLOCKS) => {
+    e.currentTarget.style.border = "none"
   }
 
   const onDragStart = (e: React.DragEvent, name: string) => {
@@ -82,6 +86,7 @@ export const DropBox: React.FC = () => {
             onDragLeave={onDragLeave}
             onDragStart={onDragStart}
             onDrop={onDrop}
+            onDragEnd={onDragEnd}
             display_value={state.is_constructor ? undefined : state.last_value}
             is_constructor={state.is_constructor}
             onBlockItemClick={state.is_constructor ? () => { } : (value) => {
